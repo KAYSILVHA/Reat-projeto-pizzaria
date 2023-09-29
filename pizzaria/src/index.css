@@ -10,10 +10,10 @@ header{
   justify-content: center;
   align-items: center;
   height: 20vh;
-  background-position: center;
+  background-image: url("./assets/imagens/back.png");
+  background-position: top center;
   background-size: 100%;
   background-repeat: no-repeat;
-  background-image: url("./assets/imagens/back.png");
   color: white;
 }
 
@@ -22,11 +22,12 @@ section{
   display: flex;
   align-items: center;
   justify-content: space-around;
+  gap: 10px;
 }
 
 .card{
   background: #fef6f4;
-  width: 40vw;
+  width: 25vw;
   display: flex;
   justify-content: center;
   align-items: center;
