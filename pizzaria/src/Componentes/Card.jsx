@@ -6,72 +6,53 @@ import Toca from "../assets/imagens/toca.png"
 
 
 function Card() {
-  const [mensagem, setMensagem] = useState("")
-  const [pizza, setPizza] = useState("");
-  const [pizzaImagem, setPizzaImagem] = useState("");
-  const pizzaCuma = () => {
-    setTimeout(() => {
-      setMensagem("Seu pedido é :")
-      setPizza("La Cuma")
-      setPizzaImagem(Cuma)
-    }, 4000)
-  }
+  const [selectedPizza, setSelectedPizza] = useState({});
 
+  // simulando um banco de dados com todas as pizzas
+  const pizzas = [
+    {
+      name: "La Cuma",
+      price: 23,
+      image: Cuma,
+      description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+    },
+    {
+      name: "La Bana",
+      price: 23,
+      image: Bana,
+      description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+    },
+    {
+      name: "La Menta",
+      price: 23,
+      image: Menta,
+      description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+    },
+    {
+      name: "La Toca",
+      price: 23,
+      image: Toca,
+      description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+    },
+  ]
 
-  //setTimeout()
-  //setTimeout(função, tempo)
-
-  const pizzaBana = () => {
-    setMensagem("Seu pedido é :")
-    setPizza("La Bana")
-    setPizzaImagem(Bana)
-  }
-
-  const pizzaMenta = () => {
-    setMensagem("Seu pedido é :")
-    setPizza("La Menta")
-    setPizzaImagem(Menta)
-  }
-
-  const pizzaToca = () => {
-    setMensagem("Seu pedido é :")
-    setPizza("La Toca")
-    setPizzaImagem(Toca)
-  }
   return (
     <main>
-      <h2>{mensagem}</h2>
-      <h3>{pizza}</h3>
-      <img src={pizzaImagem} />
+      <h2>Seu pedido é:</h2>
+      <h3>{selectedPizza.name}</h3>
+      <img src={selectedPizza.image} />
       <section>
-        <div className="card">
-          <img className="imagem" src={Cuma} alt="Pizza" />
-          <h4>La Cuma</h4>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <h3>R$ 23</h3>
-          <button onClick={pizzaCuma}>Comprar Agora</button>
-        </div>
-        <div className="card">
-          <img className="imagem" src={Menta} alt="Pizza" />
-          <h4>La Menta</h4>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <h3>R$ 23</h3>
-          <button onClick={pizzaMenta}>Comprar Agora</button>
-        </div>
-        <div className="card">
-          <img className="imagem" src={Bana} alt="Pizza" />
-          <h4>La Bana</h4>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <h3>R$ 23</h3>
-          <button onClick={pizzaBana}>Comprar Agora</button>
-        </div>
-        <div className="card">
-          <img className="imagem" src={Toca} alt="Pizza" />
-          <h4>La Toca</h4>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <h3>R$ 23</h3>
-          <button onClick={pizzaToca}>Comprar Agora</button>
-        </div>
+        {
+          pizzas.map((pizza) => (
+            <div className="card">
+              <img className="imagem" src={pizza.image} alt={`Pizza ${pizza.name}`} />
+              <h4>{pizza.name}</h4>
+              <p>{pizza.description}</p>
+              <h3>{pizza.price}</h3>
+              <button onClick={() => setSelectedPizza(pizza)}>Comprar Agora</button>
+            </div>
+          ))
+        }
       </section>
     </main>
   )
